@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  div.container
+    div.header
+      div.lefty
+        p.title gTables
+      div.righty
+        a.linky(href="/new") New Restaurant
+    div.items
+      if zagat
+        for item in zagat
+          div.box
+            p
+              a.name(href='/show/' + item.id)= item.name
+            img.foodgroups(src= item.image)
+            p.type= item.type + " Cuisine"
+            p.location= item.location + ", " + item.state
+            -for(var i=0; i<item.rating; i++) 
+              img.star(src="images/star.png")
